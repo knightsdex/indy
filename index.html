@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indy · Independence The Eagle</title>
+<meta name="description" content="Indy · Independence The Eagle">
+<meta property="og:title" content="Indy · Independence The Eaglen">
+<meta property="og:description" content="The emerald queen who bends the candles. Green cult. FOMO in.">
+<meta property="og:image" content="assets/img/portrait.png">
+<meta name="theme-color" content="#00ff88">
+<link rel="icon" type="image/jpeg" href="assets/img/portrait.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600;1,700&display=swap">
+
+<style>
+:root{
+  --bg:#050805;
+  --bg2:#0a1108;
+  --ink:#e8ffe4;
+  --green:#00ff88;
+  --green-deep:#00c46a;
+  --green-dark:#003d20;
+  --gold:#d4af37;
+  --gold-bright:#f5d76e;
+  --red:#ff2444;
+  --white:#f9fff5;
+  --muted:#7c9782;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:18px;overflow-x:hidden;line-height:1.5}
+a{color:inherit;text-decoration:none;transition:color .2s}
+img{display:block;max-width:100%}
+::selection{background:var(--green);color:#000}
+
+/* ============ NOISE + VIGNETTE ============ */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;mix-blend-mode:overlay;opacity:.08;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%, transparent, rgba(0,0,0,.55) 100%);
+}
+
+/* ============ NAV / TICKER ============ */
+.nav{position:sticky;top:0;z-index:80;backdrop-filter:blur(20px);background:rgba(5,8,5,.75);border-bottom:1px solid rgba(0,255,136,.15)}
+.ticker{background:#000;overflow:hidden;padding:8px 0;border-top:1px solid var(--green);border-bottom:1px solid var(--green);position:relative}
+.ticker-track{display:flex;gap:56px;white-space:nowrap;animation:tk 34s linear infinite;font-family:'Space Mono',monospace;font-size:12px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;text-shadow:0 0 10px var(--green)}
+.ticker-track i{color:var(--gold);font-style:normal;margin:0 6px}
+@keyframes tk{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
+.navbar{max-width:1400px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.24em;color:var(--white);display:flex;align-items:center;gap:12px}
+.brand-dot{width:10px;height:10px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green);animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.navlinks{display:flex;gap:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.navlinks a:hover{color:var(--green);text-shadow:0 0 8px var(--green)}
+@media(max-width:720px){.navlinks{display:none}}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;padding:80px 0 120px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:url('./flag.gif') center/cover no-repeat}
+.hero-bg .glow{position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 40% at 30% 40%, rgba(0,255,136,.20), transparent 60%),
+  radial-gradient(ellipse 40% 30% at 80% 70%, rgba(212,175,55,.15), transparent 60%),
+  radial-gradient(ellipse 30% 20% at 50% 100%, rgba(255,36,68,.10), transparent 60%);
+}
+.candle-bg{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;gap:14px;opacity:.18;padding:0 40px;pointer-events:none}
+.candle-bg .c{width:24px;background:linear-gradient(180deg,var(--green),var(--green-deep));border:1px solid var(--green);box-shadow:0 0 22px var(--green);position:relative}
+.candle-bg .c::before{content:"";position:absolute;left:50%;top:-14px;bottom:100%;width:2px;transform:translateX(-50%);background:var(--green);height:14px}
+.candle-bg .c::after{content:"";position:absolute;left:50%;bottom:-14px;top:100%;width:2px;transform:translateX(-50%);background:var(--green);height:10px}
+
+.hero-inner{max-width:1400px;margin:0 auto;padding:40px 22px;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+@media(max-width:920px){.hero-inner{grid-template-columns:1fr;gap:32px}}
+
+.hero-copy{position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:11px;color:var(--green);letter-spacing:.32em;text-transform:uppercase;margin-bottom:26px;text-shadow:0 0 10px var(--green)}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--green)}
+.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:clamp(58px,10vw,140px);line-height:.88;letter-spacing:-.02em;color:var(--white);margin-bottom:14px;text-shadow:0 0 40px rgba(0,255,136,.25)}
+.hero h1 em{color:var(--green);font-style:italic;text-shadow:0 0 32px rgba(0,255,136,.65)}
+.hero h1 .gold{color:var(--gold);font-style:italic}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:clamp(22px,2.8vw,34px);color:var(--green);margin-bottom:34px;max-width:520px;line-height:1.4;text-shadow:0 0 12px rgba(0, 0, 0, 0.55),0 0 24px rgba(0, 0, 0, 0.55),0 0 48px rgba(3, 3, 3, 0.35);animation:tagShine 2.5s ease-in-out infinite}
+@keyframes tagShine{0%,100%{text-shadow:0 0 12px rgba(0, 0, 0, 0.55),0 0 24px rgba(10, 12, 11, 0.5),0 0 48px rgba(0, 0, 0, 0.3)}50%{text-shadow:0 0 18px rgba(0, 0, 0, 0.55),0 0 36px rgba(3, 3, 3, 0.85),0 0 72px rgba(8, 8, 8, 0.55)}}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 28px 14px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;border-radius:0;position:relative;transition:transform .2s,box-shadow .2s;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn:hover::before{transform:translateX(100%)}
+.btn.primary{background:var(--green);color:#001a0c;box-shadow:0 6px 0 var(--green-deep),0 12px 32px rgba(0,255,136,.35)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--green-deep),0 18px 40px rgba(0,255,136,.5)}
+.btn.ghost{background:transparent;color:var(--green);border:1px solid var(--green);box-shadow:inset 0 0 0 rgba(0,255,136,.3)}
+.btn.ghost:hover{transform:translateY(-3px);background:rgba(0,255,136,.1);box-shadow:inset 0 0 24px rgba(0,255,136,.3)}
+.btn.gold{background:var(--gold);color:#1a1200;box-shadow:0 6px 0 #8a6f10,0 12px 32px rgba(212,175,55,.4)}
+.btn.gold:hover{transform:translateY(-3px);box-shadow:0 9px 0 #8a6f10,0 18px 40px rgba(212,175,55,.6)}
+
+.hero-photo{position:relative}
+.hero-photo::before{content:"";position:absolute;inset:-20px;background:conic-gradient(from 0deg,transparent 0deg,var(--green) 60deg,transparent 120deg,var(--gold) 180deg,transparent 240deg,var(--green) 300deg,transparent 360deg);filter:blur(30px);opacity:.55;animation:spin 12s linear infinite;z-index:-1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-photo img{border:1px solid rgba(0,255,136,.4);box-shadow:0 0 0 4px rgba(0,0,0,.6),0 30px 80px rgba(0,0,0,.8),0 0 60px rgba(0,255,136,.2);display:block;width:100%}
+.hero-photo .frame{position:absolute;inset:14px;border:1px solid rgba(212,175,55,.5);pointer-events:none}
+.hero-photo .badge{position:absolute;top:-14px;right:-14px;background:var(--gold);color:#1a1200;padding:8px 14px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.24em;box-shadow:0 8px 20px rgba(0,0,0,.6);transform:rotate(6deg)}
+
+/* ============ MARQUEE HERO ============ */
+.marq{background:var(--green);color:#001a0c;overflow:hidden;padding:16px 0;border-top:2px solid #000;border-bottom:2px solid #000}
+.marq-track{display:flex;gap:70px;white-space:nowrap;animation:tk 24s linear infinite;font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.24em}
+.marq-track span{display:flex;align-items:center;gap:24px}
+.marq-track em{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;color:#000;font-size:22px;text-transform:none;letter-spacing:0}
+
+/* ============ SECTION ============ */
+.section{max-width:1400px;margin:0 auto;padding:110px 22px;position:relative}
+.section-head{max-width:900px;margin:0 auto 60px;text-align:center}
+.section-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.32em;text-transform:uppercase;margin-bottom:20px}
+.section-eyebrow::before,.section-eyebrow::after{content:"";width:34px;height:1px;background:var(--gold)}
+.section h2{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:clamp(40px,6vw,78px);line-height:.98;color:var(--white);letter-spacing:-.01em}
+.section h2 em{color:var(--green);font-style:italic;text-shadow:0 0 30px rgba(0,255,136,.5)}
+.section h2 .gold{color:var(--gold);font-style:italic}
+.section-lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2vw,22px);color:var(--muted);margin-top:22px;line-height:1.5}
+
+/* ============ CA CARD ============ */
+.ca-wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.ca-card{background:linear-gradient(180deg,rgba(0,255,136,.06),rgba(0,0,0,.6));border:1px solid var(--green);padding:28px 30px;position:relative;box-shadow:0 0 0 6px rgba(0,255,136,.05),0 28px 60px rgba(0,0,0,.7),inset 0 0 40px rgba(0,255,136,.05)}
+.ca-card::before{content:"";position:absolute;top:-1px;left:20px;right:20px;height:1px;background:var(--gold)}
+.ca-card::after{content:"";position:absolute;bottom:-1px;left:20px;right:20px;height:1px;background:var(--gold)}
+.ca-lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.ca-lbl b{background:var(--green);color:#001a0c;padding:3px 10px;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.2em}
+.ca-row{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.ca-value{flex:1;min-width:0;background:#000;border:1px dashed var(--green);padding:16px 18px;font-family:'Space Mono',monospace;font-size:14px;color:var(--green);word-break:break-all;text-shadow:0 0 8px rgba(0,255,136,.5)}
+.copy-btn{padding:16px 24px;background:var(--green);color:#001a0c;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.2em;border:none;cursor:pointer}
+.copy-btn.copied{background:var(--gold);color:#1a1200}
+
+/* ============ LIVE STATS ============ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;padding:0 22px}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:linear-gradient(180deg,rgba(0,255,136,.05),rgba(0,0,0,.4));border:1px solid rgba(0,255,136,.3);padding:26px 22px;position:relative;transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 20px 40px rgba(0,255,136,.15)}
+.stat-k{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px}
+.stat-v{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(28px,4vw,42px);color:var(--white);line-height:1;letter-spacing:-.01em}
+.stat-v.up{color:var(--green);text-shadow:0 0 20px rgba(0,255,136,.5)}
+.stat-v.dn{color:var(--red);text-shadow:0 0 20px rgba(255,36,68,.5)}
+.stat-v small{display:block;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.16em;margin-top:8px;font-weight:400}
+
+/* ============ SPLIT / EDITORIAL ============ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;max-width:1600px;margin:0 auto}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.split-photo{position:relative;min-height:600px;background-size:cover;background-position:center;overflow:hidden}
+.split-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--bg) 100%);pointer-events:none}
+@media(max-width:820px){.split-photo{min-height:400px}.split-photo::after{background:linear-gradient(180deg,transparent 60%,var(--bg) 100%)}}
+.split-text{padding:110px 60px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(90deg,rgba(0,0,0,.6),transparent)}
+@media(max-width:820px){.split-text{padding:60px 22px}}
+.split-text .kicker{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.32em;text-transform:uppercase;margin-bottom:20px}
+.split-text h3{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:clamp(36px,5vw,58px);line-height:.95;color:var(--white);margin-bottom:24px}
+.split-text h3 em{color:var(--green);font-style:italic}
+.split-text p{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.6;color:var(--ink);opacity:.85;margin-bottom:16px}
+.split-text .quote{font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:var(--green);border-left:3px solid var(--gold);padding-left:20px;margin-top:20px;line-height:1.4}
+
+.split.rev .split-photo{order:2}
+.split.rev .split-photo::after{background:linear-gradient(-90deg,transparent 60%,var(--bg) 100%)}
+@media(max-width:820px){.split.rev .split-photo{order:0}.split.rev .split-photo::after{background:linear-gradient(180deg,transparent 60%,var(--bg) 100%)}}
+.split.rev .split-text{order:1}
+
+/* ============ THE CODE (laws) ============ */
+.code-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1300px;margin:0 auto;padding:0 22px}
+@media(max-width:900px){.code-grid{grid-template-columns:1fr}}
+.law{background:linear-gradient(180deg,rgba(0,255,136,.04),rgba(0,0,0,.3));border-top:1px solid var(--green);padding:34px 26px;position:relative;transition:transform .35s}
+.law:hover{transform:translateY(-6px)}
+.law::before{content:"";position:absolute;top:0;left:0;height:4px;width:0;background:var(--green);transition:width .5s}
+.law:hover::before{width:100%}
+.law-n{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:80px;color:transparent;-webkit-text-stroke:1px var(--green);line-height:.9;margin-bottom:14px;text-shadow:0 0 30px rgba(0,255,136,.3)}
+.law h4{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:26px;color:var(--white);margin-bottom:10px;line-height:1.15}
+.law p{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--muted);line-height:1.55}
+
+/* ============ FOMO COUNTDOWN ============ */
+.fomo-block{max-width:1200px;margin:0 auto;padding:0 22px;text-align:center}
+.count{display:flex;justify-content:center;gap:22px;margin:36px 0 40px;flex-wrap:wrap}
+.count-box{background:linear-gradient(180deg,#000,#0a1108);border:1px solid var(--green);padding:22px 26px;min-width:130px}
+@media(max-width:520px){.count-box{min-width:88px;padding:16px 12px}}
+.count-num{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(42px,7vw,70px);color:var(--green);line-height:1;text-shadow:0 0 30px rgba(0,255,136,.4)}
+.count-lbl{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.28em;text-transform:uppercase;margin-top:8px}
+.fomo-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--gold);margin-top:14px;letter-spacing:.02em}
+
+/* ============ GALLERY ============ */
+.gal-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;max-width:1400px;margin:0 auto;padding:0 22px}
+@media(max-width:780px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
+.gal-item{position:relative;overflow:hidden;background:#000;cursor:zoom-in;transition:transform .4s}
+.gal-item:hover{transform:scale(1.02)}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s,filter .4s}
+.gal-item:hover img{transform:scale(1.06);filter:brightness(1.1)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.7) 100%);pointer-events:none}
+.gal-item .cap{position:absolute;left:16px;bottom:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;color:var(--green);text-transform:uppercase;z-index:2;text-shadow:0 0 10px var(--green)}
+.gal-item.a{grid-column:span 3;grid-row:span 2;aspect-ratio:3/4}
+.gal-item.b{grid-column:span 3;grid-row:span 1;aspect-ratio:2/1}
+.gal-item.c{grid-column:span 3;grid-row:span 1;aspect-ratio:2/1}
+@media(max-width:780px){.gal-item.a,.gal-item.b,.gal-item.c{grid-column:span 1;grid-row:span 1;aspect-ratio:1/1}}
+
+/* ============ HOW TO BUY ============ */
+.buy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1300px;margin:0 auto;padding:0 22px}
+@media(max-width:820px){.buy-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.buy-grid{grid-template-columns:1fr}}
+.step{border:1px solid rgba(0,255,136,.2);padding:34px 26px;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,255,136,.03));position:relative;transition:background .3s,transform .3s}
+.step + .step{border-left:none}
+@media(max-width:820px){.step + .step{border-left:1px solid rgba(0,255,136,.2);border-top:none}.step:nth-child(3){border-top:1px solid rgba(0,255,136,.2)}}
+.step:hover{background:linear-gradient(180deg,rgba(0,255,136,.08),rgba(0,255,136,.02));transform:translateY(-4px)}
+.step-n{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.24em;margin-bottom:20px}
+.step h4{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:26px;color:var(--white);margin-bottom:12px;line-height:1.1}
+.step p{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--muted);line-height:1.5}
+
+/* ============ DEX ============ */
+.dex-wrap{max-width:1300px;margin:0 auto;padding:0 22px}
+.dex-frame{width:100%;height:640px;border:1px solid var(--green);background:#000;box-shadow:0 0 0 6px rgba(0,255,136,.06),0 30px 60px rgba(0,0,0,.8)}
+@media(max-width:780px){.dex-frame{height:500px}}
+
+/* ============ FOOTER ============ */
+footer{background:#000;padding:80px 22px 40px;border-top:1px solid rgba(0,255,136,.2);position:relative}
+.foot{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px}
+@media(max-width:820px){.foot{grid-template-columns:1fr;gap:40px}}
+.foot-brand h5{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:38px;color:var(--white);margin-bottom:12px}
+.foot-brand h5 em{color:var(--green);font-style:italic}
+.foot-brand p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--muted);max-width:340px;line-height:1.5}
+.foot h6{font-family:'Bebas Neue',sans-serif;letter-spacing:.28em;color:var(--gold);font-size:13px;margin-bottom:16px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.08em}
+.foot ul a:hover{color:var(--green);text-shadow:0 0 8px var(--green)}
+.foot-bottom{max-width:1200px;margin:60px auto 0;padding-top:30px;border-top:1px solid rgba(0,255,136,.15);text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.16em;line-height:1.7}
+.foot-bottom b{color:var(--red)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ GOLD DUST ============ */
+.dust{position:fixed;bottom:0;pointer-events:none;z-index:60;font-size:8px;color:var(--gold);opacity:.9}
+
+/* ============ LIGHTBOX ============ */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;z-index:200;padding:22px;cursor:zoom-out;backdrop-filter:blur(20px)}
+.lb.open{display:flex;animation:in .3s}
+@keyframes in{from{opacity:0}to{opacity:1}}
+.lb img{max-width:94vw;max-height:90vh;border:1px solid var(--green);box-shadow:0 0 60px rgba(0,255,136,.3),0 40px 80px rgba(0,0,0,.9)}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tk">
+      <span>◆ Indy <i>·</i> Independence The Eagle <i>·</i> LIVE ON Ethereum <i></span>
+      <span>◆ Indy <i>·</i> Independence The Eagle <i>·</i> LIVE ON Ethereum <i></span>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="brand"><span class="brand-dot"></span>Indy</div>
+    <nav class="navlinks">
+      <a href="#story">Story</a>
+      <a href="#buy">How to Buy</a>
+      <a href="#chart">Chart</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+    <a class="btn primary" id="ctaTop" target="_blank">Buy $Indy →</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="glow"></div>
+    <!-- <div class="candle-bg" id="candles"></div> -->
+  </div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Indy · Est. 2026</div>
+      <h1>Independence<br>The Eagle<br><em>Indy.</em></h1>
+      <div class="hero-tag">The eagle, known as Indy, is scheduled to appear at the burial of America’s Time Capsule, part of the country’s 250th anniversary celebration. Visitors will be able to meet and take pictures with her.</div>
+      <div class="hero-cta">
+        <a class="btn primary" id="ctaBuy" target="_blank">▸ Buy $Indy</a>
+        <a class="btn ghost" id="ctaChart" target="_blank">Live Chart</a>
+        <button class="btn gold" onclick="scrollToId('buy')">How to Buy</button>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <span class="badge">Live · Ethereum</span>
+      <img src="assets/img/hero.jpg" alt="Indy">
+      <span class="frame"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marq" aria-hidden="true">
+  <div class="marq-track">
+    <span>Indy <em>-</em> The Eagle <em>·</em> Independence </span>
+    <span>Indy <em>-</em> The Eagle <em>·</em> Independence </span>
+  </div>
+</div>
+
+<!-- ============ CA ============ -->
+<section class="section" style="padding:70px 22px 40px" id="ca">
+  <div class="ca-wrap">
+    <div class="ca-card reveal">
+      <div class="ca-lbl"><span>Contract Address · Ethereum SPL</span> <b>Verified</b></div>
+      <div class="ca-row">
+        <div class="ca-value" id="caValue">0xComingSoon</div>
+        <button class="copy-btn" id="copyBtn" onclick="copyCA()">COPY</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE STATS ============ -->
+<section class="section" style="padding:60px 22px 90px">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">Vital Signs</div>
+    <h2>Tokenomics</h2>
+  </div>
+  <div class="stats">
+    <div class="stat reveal"><div class="stat-k">Total Supply</div><div class="stat-v" id="stPrice">1 Billion</div></div>
+    <div class="stat reveal"><div class="stat-k">Tax</div><div class="stat-v" id="stMC">0%</div></div>
+    <div class="stat reveal"><div class="stat-k">Contract</div><div class="stat-v" id="stCh">Renounced</div></div>
+    <div class="stat reveal"><div class="stat-k">LP</div><div class="stat-v" id="stVol">Burned</div></div>
+  </div>
+</section>
+
+<!-- ============ STORY (split) ============ -->
+<section id="story" class="section" style="padding:100px 0 0;max-width:none">
+  <div class="split">
+    <div class="split-photo reveal">
+      <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">America&#39;s 250th anniversary just revealed its celebration eagle<br><br>called &quot;Indy&quot;<br><br>the rescued bald eagle will appear at Independence Hall in Philadelphia as part of the nation&#39;s 250th anniversary celebration<a href="https://t.co/OTOyGmYytp">https://t.co/OTOyGmYytp</a> <a href="https://t.co/ZBI9bk1mnN">pic.twitter.com/ZBI9bk1mnN</a></p>&mdash; 莉兹🔶BNB (@Liz_Binance) <a href="https://x.com/Liz_Binance/status/2072994952607338771?ref_src=twsrc%5Etfw">July 3, 2026</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="split-text reveal">
+      <div class="kicker">The Story</div>
+      <h3>A bald eagle named <em>Independence</em> at Independence Hall.</h3>
+      <p>In Philadelphia, the Independence Day spectacle will include a bald eagle named Independence at Independence Hall.</p>
+      <p>Since 1782, when the bald eagle was placed on the Great Seal of the United States, the bird has stood for American sovereignty and power, holding arrows in one talon and an olive branch in the other. </p>
+      <div class="quote">Long before that, eagles had been used as symbols of empire, authority and military strength, including in ancient Rome.</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO BUY ============ -->
+<section id="buy" class="section">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">How to Buy</div>
+    <h2>Four steps to buy <em>Indy</em></h2>
+    <div class="section-lead">Get a wallet, load ETH, paste the contract, swap. That's the whole ritual.</div>
+  </div>
+  <div class="buy-grid">
+    <div class="step reveal"><div class="step-n">Step 01</div><h4>Get an Ethereum wallet.</h4><p>MetaMask, Rainbow, or Coinbase Wallet. Install the app or extension and back up your seed phrase.</p></div>
+    <div class="step reveal"><div class="step-n">Step 02</div><h4>Load with ETH.</h4><p>Buy ETH on any exchange and send it to your wallet. Keep a little extra for gas fees.</p></div>
+    <div class="step reveal"><div class="step-n">Step 03</div><h4>Paste the contract address.</h4><p>Open Uniswap, paste the $Indy contract from above, and choose how much you want to swap.</p></div>
+    <div class="step reveal"><div class="step-n">Step 04</div><h4>Swap and hold.</h4><p>Confirm the transaction on Ethereum. You're in — when she raises the candle, do not blink.</p></div>
+  </div>
+</section>
+
+<!-- ============ FOMO COUNTDOWN ============ -->
+<!-- <section class="section" style="padding:80px 22px 100px">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">FOMO</div>
+    <h2>She raises the candle in<br><em>hours.</em></h2>
+    <div class="section-lead">Nobody knows exactly when. But it's soon.</div>
+  </div>
+  <div class="fomo-block">
+    <div class="count reveal">
+      <div class="count-box"><div class="count-num" id="cH">--</div><div class="count-lbl">Hours</div></div>
+      <div class="count-box"><div class="count-num" id="cM">--</div><div class="count-lbl">Minutes</div></div>
+      <div class="count-box"><div class="count-num" id="cS">--</div><div class="count-lbl">Seconds</div></div>
+    </div>
+    <div class="fomo-caption reveal">The green candle waits for no one.</div>
+  </div>
+</section> -->
+
+<!-- ============ EDITORIAL (rev split) ============ -->
+<section class="section" style="padding:0;max-width:none">
+  <div class="split rev">
+    <div class="split-photo reveal" style="background-image:url('assets/img/lounge.jpg')"></div>
+    <div class="split-text reveal">
+      <div class="kicker">Editorial</div>
+      <h3>Indy doesn't have a<br>roadmap. Indy has a<br><em>wildness.</em></h3>
+      <p>No whitepaper. No Discord AMA. No lead dev. The eagle is now used to human socialization and depends on human care.</p>
+      <p>Folks can’t help but be fond of her when they meet her.</p>
+      <div class="quote">We wish these birds could still remain in the wild.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="section">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">Look Book</div>
+    <h2>Life of <em>Indy</em></h2>
+  </div>
+  <div class="gal-grid">
+    <div class="gal-item a reveal" data-src="assets/img/hero.jpg"><img src="assets/img/images.jpg" alt=""></div>
+    <div class="gal-item b reveal" data-src="assets/img/victory.jpg"><img src="assets/img/victory.jpg" alt=""></div>
+    <div class="gal-item c reveal" data-src="assets/img/lounge.jpg"><img src="assets/img/lounge.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ DEXSCREENER ============ -->
+<section id="chart" class="section">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">Live Chart</div>
+    <h2>Only <em>Indy</em> from here.</h2>
+  </div>
+  <div class="dex-wrap">
+    <iframe class="dex-frame reveal" id="dexFrame" src="" loading="lazy" title="DexScreener chart"></iframe>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot">
+    <div class="foot-brand">
+      <h5><em>Indy</em></h5>
+      <p>A bald eagle named Independence at Independence Hall. Indy on Ethereum.</p>
+    </div>
+    <div>
+      <h6>Trade</h6>
+      <ul>
+        <li><a id="ftBuy" target="_blank">Uniswap ↗</a></li>
+        <li><a id="ftDex" target="_blank">DexScreener ↗</a></li>
+        <!-- <li><a id="ftJup" target="_blank">Jupiter ↗</a></li> -->
+        <li><a id="ftScan" target="_blank">Etherscan ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>Cult</h6>
+      <ul>
+        <li><a href="https://x.com/IndependenceEagle" target="_blank">Twitter / X ↗</a></li>
+        <li><a href="https://t.me/IndependenceTheEagle" target="_blank">Telegram ↗</a></li>
+        <li><a onclick="copyCA()" style="cursor:pointer">Copy Contract ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <b>⚠ Meme coin · parody · zero utility.</b> $Indy is a community memecoin with no team promises, no roadmap, no financial claims.<br>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><img id="lbImg" alt=""></div>
+
+<script>
+let CA = '0xComingSoon';
+window.__Indy_CA__ = CA;
+
+function wireLinks(){
+  const pump  = CA==='TBA' ? '#' : 'https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=' + CA;
+  const dex   = CA==='TBA' ? '#' : 'https://dexscreener.com/ethereum/' + CA;
+  const jup   = CA==='TBA' ? '#' : 'https://jup.ag/swap/SOL-' + CA;
+  const scan  = CA==='TBA' ? '#' : 'https://etherscan.io/token/' + CA;
+  const emb   = CA==='TBA' ? '' : 'https://dexscreener.com/ethereum/' + CA + '?embed=1&theme=dark&trades=0&info=0';
+  ['ctaTop','ctaBuy','ftBuy'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=pump});
+  ['ctaChart','ftDex'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=dex});
+  const jupE=document.getElementById('ftJup');if(jupE)jupE.href=jup;
+  const scanE=document.getElementById('ftScan');if(scanE)scanE.href=scan;
+  const f=document.getElementById('dexFrame');if(f&&emb)f.src=emb;
+}
+wireLinks();
+
+function copyCA(){
+  if(CA==='TBA'){alert('CA drops soon. Bookmark this page.');return;}
+  navigator.clipboard.writeText(CA).then(()=>{
+    const b=document.getElementById('copyBtn');
+    const t=b.textContent;b.textContent='✓ COPIED';b.classList.add('copied');
+    setTimeout(()=>{b.textContent=t;b.classList.remove('copied');},1800);
+  });
+}
+
+function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+
+// Candle background
+const heights=[45,60,52,72,88,74,80,95,82,90,78,86,72,66,80,92,88,72];
+const cWrap=document.getElementById('candles');
+if(cWrap){
+  heights.forEach((h,i)=>{
+    const c=document.createElement('div');c.className='c';
+    c.style.height=h+'%';c.style.animationDelay=(i*0.05)+'s';
+    cWrap.appendChild(c);
+  });
+}
+
+// Reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&(e.target.classList.add('in'),io.unobserve(e.target))),{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Lightbox
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('[data-src]').forEach(el=>el.addEventListener('click',()=>{lbImg.src=el.dataset.src;lb.classList.add('open')}));
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+
+// Countdown — target end of tomorrow (rolling)
+function tickCount(){
+  const now=new Date();
+  const t=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0);
+  const d=t-now;
+  const h=String(Math.floor(d/3600000)).padStart(2,'0');
+  const m=String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+  const s=String(Math.floor((d%60000)/1000)).padStart(2,'0');
+  document.getElementById('cH').textContent=h;
+  document.getElementById('cM').textContent=m;
+  document.getElementById('cS').textContent=s;
+}
+tickCount();setInterval(tickCount,1000);
+
+// Live stats from DexScreener
+async function loadStats(){
+  if(CA==='TBA')return;
+  try{
+    const r=await fetch('https://api.dexscreener.com/latest/dex/tokens/'+CA);
+    const d=await r.json();
+    if(!d.pairs?.length)return;
+    const p=d.pairs.sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0))[0];
+    const fmt=(n)=>n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e3?(n/1e3).toFixed(1)+'k':n.toFixed(2);
+    const price=parseFloat(p.priceUsd);
+    document.getElementById('stPrice').innerHTML=`$${price<0.01?price.toExponential(2):price.toFixed(6)}<small>USD</small>`;
+    document.getElementById('stMC').innerHTML=`$${fmt(p.marketCap||p.fdv||0)}<small>USD</small>`;
+    const ch=p.priceChange?.h24||0;
+    const chEl=document.getElementById('stCh');
+    chEl.innerHTML=`${ch>=0?'+':''}${ch.toFixed(2)}%<small>vs yesterday</small>`;
+    chEl.className='stat-v '+(ch>=0?'up':'dn');
+    document.getElementById('stVol').innerHTML=`$${fmt(p.volume?.h24||0)}<small>USD</small>`;
+  }catch(e){}
+}
+loadStats();setInterval(loadStats,30000);
+
+// Gold dust falling
+function dust(){
+  const d=document.createElement('div');
+  d.className='dust';d.textContent='◆';
+  d.style.left=Math.random()*100+'vw';
+  d.style.bottom='100vh';
+  d.style.fontSize=(6+Math.random()*8)+'px';
+  d.style.color=Math.random()>.7?'#00ff88':'#d4af37';
+  const dur=(6+Math.random()*8);
+  d.style.transition=`transform ${dur}s linear, opacity ${dur}s linear`;
+  document.body.appendChild(d);
+  requestAnimationFrame(()=>{
+    d.style.transform=`translateY(120vh) translateX(${(Math.random()*160-80)}px)`;
+    d.style.opacity='0';
+  });
+  setTimeout(()=>d.remove(),dur*1000);
+}
+setInterval(dust,700);
+
+console.log('%c🟢 Indy — she takes the market green.','color:#00ff88;font-family:serif;font-style:italic;font-size:22px;font-weight:bold');
+</script>
+</body>
+</html>
