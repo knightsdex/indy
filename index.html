@@ -442,10 +442,10 @@ window.__Indy_CA__ = CA;
 
 function wireLinks(){
   const pump  = CA==='TBA' ? '#' : 'https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=' + CA;
-  const dex   = CA==='TBA' ? '#' : 'https://dexscreener.com/ethereum/' + CA;
+  const dex   = CA==='TBA' ? '#' : 'https://dexscreener.com/ethereum/0xde5cc5af55d909280a1ccd5d383cb91f94fb298f';
   const jup   = CA==='TBA' ? '#' : 'https://jup.ag/swap/SOL-' + CA;
   const scan  = CA==='TBA' ? '#' : 'https://etherscan.io/token/' + CA;
-  const emb   = CA==='TBA' ? '' : 'https://dexscreener.com/ethereum/' + CA + '?embed=1&theme=dark&trades=0&info=0';
+  const emb   = CA==='TBA' ? '' : 'https://dexscreener.com/ethereum/0xde5cc5af55d909280a1ccd5d383cb91f94fb298f?embed=1&theme=dark&trades=0&info=0';
   ['ctaTop','ctaBuy','ftBuy'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=pump});
   ['ctaChart','ftDex'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=dex});
   const jupE=document.getElementById('ftJup');if(jupE)jupE.href=jup;
